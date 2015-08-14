@@ -5,6 +5,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var dbConfig = require('./db/config.js');
 
 var app = express();
 

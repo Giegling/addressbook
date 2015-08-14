@@ -1,8 +1,11 @@
 var mongoose = require('mongoose');
-var db = mongoose.connection;
+var Schema = mongoose.Schema;
+var dbUrl = "mongodb://localhost/addressbookdb";
 
-mongoose.connect('mongodb://localhost/addressbookdb', function (error) {
-  if (error) {
-    console.log(error);
+mongoose.connect(dbUrl, function (err) {
+  if (err) {
+    console.log('[DB] Connection failed to ' + dbUrl + '. ' + err);
+  } else {
+  	console.log('[DB] Successfully connected to: ' + dbUrl);
   }
 });

@@ -1,23 +1,6 @@
 <div class="form-group">
-	<input type="text" class="form-control" name="name" id="name" placeholder="სახელი, გვარი"><br>
-	<input type="email" class="form-control" name="email" id="email" placeholder="ელ. ფოსტა"><br>
-	<input type="password" class="form-control" name="pass" id="pass" placeholder="პაროლი"><br>
-	<input type="number" class="form-control" name="num" id="num" placeholder="ტელ. ნომერი"><br>
-	<button type="submit" class="btn btn-primary" id="reg-form-btn">რეგისტრაცია</button>
+	<input type="email" class="form-control" placeholder="ელ- ფოსტა" data-ng-model="registration.username" required autofocus><br>
+	<input type="password" class="form-control" placeholder="პაროლი" data-ng-model="registration.password" required><br>
+	<input type="password" class="form-control" placeholder="პაროლის გამეორება" data-ng-model="registration.confirmPassword" required><br>
+	<button type="submit" class="btn btn-md btn-info btn-block" data-ng-click="signUp()">რეგისტრაცია</button>
 </div>
-<script>
-	$(document).ready(function() {
-		$("#reg-form-btn").click(function() {
-			var name = $("#name").val();
-			var email = $("#email").val();
-			var pass = $("#pass").val();
-			var num = $("#num").val();
-	    	$.post("/", {
-	    		name: name,
-	    		email: email,
-	    		pass: pass,
-	    		num: num
-	    	});
-		});
-	});
-</script>

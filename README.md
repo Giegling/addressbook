@@ -1,22 +1,22 @@
-# ინსტალაცია #
+# Installation #
 
-1.https://bitbucket.org/teamge/addressbook#clone დააკოპირეთ რეპოზიტორია
+1.Make a clone of this repository - https://github.com/brulla/addressbook.git
 
-2.ვაყენებთ ნოდის მოდულებს 
+2.Install node modules
 ```
 #!bash
 
 cd addressbook
 npm install
 ```
-3.ვაყენებთ ბაუერის მოდულებს
+3.Install bower components
 ```
 #!bash
 
 cd client/assets
 bower install
 ```
-4.გალპით ვაგენერირებთ ჯავასკრიპტის სორსებს
+4.Generate javascript sources
 
 ```
 #!bash
@@ -24,7 +24,7 @@ bower install
 gulp
 ```
 
-5.ვრთავთ სერვერს
+5.Run server
 ```
 #!bash
 

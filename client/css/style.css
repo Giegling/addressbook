@@ -1,0 +1,17 @@
+@font-face {
+ 	font-family: 'BPGSquare';
+	src: url('../fonts/BPGSquare.eot?#iefix') format('embedded-opentype'),  url('../fonts/BPGSquare.woff') format('woff'), url('../fonts/BPGSquare.ttf')  format('truetype'), url('../fonts/BPGSquare.svg#BPGSquare') format('svg');
+  	font-weight: normal;
+  	font-style: normal;
+}
+
+.navbar-brand {
+	color: #0066FF !important;
+	font-family: "Lobster", cursive;
+	font-size: 24px;
+	font-weight: 400;
+}
+
+body {
+	font-family: "BPGSquare";
+}

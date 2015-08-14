@@ -42,7 +42,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-.gitignore
 server/node_modules
 client/node_modules
 client/assets/bower_components

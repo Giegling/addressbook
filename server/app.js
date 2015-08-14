@@ -1,16 +1,20 @@
+"use strict";
+
 var express = require('express');
-var http = require('http');
-var app = express();
+var path = require('path');
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-app.use(express.static(__dirname + '/../client'));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(8000, function() {
-	console.log("Server is running!");
-});
+
+app.use('/', require('./routes/')(app));
+
+module.exports = app;

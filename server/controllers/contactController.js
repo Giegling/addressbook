@@ -2,14 +2,14 @@
 
 var Contact = require('../models/contact.js');
 
-exports.create = function(req, res) {
+module.exports.createContact = function(req, res) {
 	var contact = req.body;
 
 	if (friend == null || friend.name == null || friend.name.trim().length == 0 ||friend.email == null) {
 		return res.send(400);
 	}
 
-	var contactEntry = new db.contactSchema;
+	var contactEntry = new db.ContactSchema;
 	contactEntry.name = contact.name.trim();
 
 	contactEntry.save(function(err) {

@@ -14,7 +14,7 @@ module.exports = function (app) {
 		next();
 	});
 
-	router.post('/api/v1/contact/', contactController.create);
+	router.post('/api/contact', contactController.createContact);
 
 	return router;
 };

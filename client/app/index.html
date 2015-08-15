@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,18 +10,25 @@
 		<link rel="stylesheet" href="/stylesheets/style.css">
 		<link rel="icon" href="favicon.ico">
 	</head>
-	<body>
+	<body ng-app="app">
 
 		<div ng-view></div>
 
+		<!-- scripts -->
 		<script src="/bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="/bower_components/angular/angular.min.js"></script>
 		<script src="/bower_components/angular-route/angular-route.min.js"></script>
+		
+		<!-- app and services -->
 		<script src="/app.js"></script>
+		<script src="/components/contacts/ContactsService.js"></script>
+
+		<!-- resources -->
+		<script src="/shared/resources/contact.js"></script>
 
 		<!-- controllers -->
 		<script src="/components/popup/popupController.js"></script>
-		<script src="/components/contacts/contactsController.js"></script>
+		<script src="/components/contacts/ContactsController.js"></script>
 	</body>
 </html>

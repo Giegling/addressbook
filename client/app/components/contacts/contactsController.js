@@ -1,12 +1,14 @@
-app.controller('contactsController', function($scope) {
-		$scope.friends = [];
-		$scope.addContact = function(name, email, number) {
-			if (name != null && name.trim().length > 0 && email != null) {
-				var contact = {name: name, email: email, number: number};
+angular.module('app').controller('ContactsController', ['$scope', 'ContactsService', function($scope, ContactsService) {
+		$scope.contacts = [];
+		$scope.addContact = function(contact) {
+			$scope.contact = contact;
+			console.log(contact);
+			if (contact.name != null && contact.email != null) {
 
-				contactsService.create(contact).then(function(data) {
-					$scope.friends.push(data);
+				ContactsService.create(contact).then(function(data) {
+					$scope.contacts.push(data);
 				})
+
 			}
 		};
-});
+}]);

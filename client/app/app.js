@@ -12,10 +12,11 @@ app.config(function ($routeProvider) {
 			templateUrl: "/components/profile/profile.html"
 		})
 		.when("/contacts", {
+			controller: 'ContactsController',
 			templateUrl: "/components/contacts/contacts.html"
 		})
 });
 
 app.constant('appSettings', {
-	apiServiceBaseUri: "http://localhost:3001/api/v1"
+	apiServiceBaseUri: "http://localhost:3001/api"
 });

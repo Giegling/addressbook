@@ -12,6 +12,19 @@ angular.module('app').factory('ContactsService', ['$http', '$q', 'appSettings', 
 			return deferred.promise;
 		},
 
+		read: function() {
+			var deferred = $q.defer();
+
+			$http.get(appSettings.apiServiceBaseUri + '/contact/read').success(function(data) {
+				deferred.resolve(data);
+				return data;
+			}).error(function(data, status) {
+				deferred.reject(data);
+			});
+
+			return deferred.promise;
+		},
+
 		remove: function(id) {
 			var deferred = $q.defer();
 			

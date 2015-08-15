@@ -5,13 +5,14 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "async": "^1.4.2",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
+    "crypto": "0.0.3",
     "express": "^4.13.3",
+    "mailgun-js": "0.7.0",
     "mongoose": "^4.1.2",
     "morgan": "1.5.3",
-    "crypto": "0.0.3",
-    "bcrypt-nodejs": "0.0.3",
-    "mailgun-js": "0.7.0",
     "multer": "^0.1.8",
     "nodemon": "^1.4.0"
   },

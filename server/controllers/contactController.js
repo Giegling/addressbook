@@ -6,7 +6,7 @@ module.exports.create = function(req, res) {
 	var contact = req.body;
 	
 	if (contact.name == "" || contact.name.trim().length == 0 || contact.email == "" || contact.email.trim().length == 0 || contact.number == "" || contact.number.trim().length == 0) {
-		return res.send(400);
+		return res.sendStatus(400);
 	}
 
 	var contactEntry = new Contact.ContactModel();
@@ -20,8 +20,14 @@ module.exports.create = function(req, res) {
 			return res.sendStatus(400);
 		}
 
-		return res.status(200).send(contactEntry);
+		return res.sendStatus(200).send(contactEntry);
 	});
+};
+
+module.exports.read = function(req, res) {
+	Contact.ContactModel.find({}, function(err, contacts) {
+		return res.send(contacts);
+	})
 };
 
 module.exports.remove = function(req, res) {
@@ -31,23 +37,20 @@ module.exports.remove = function(req, res) {
 		return res.sendStatus(400);
 	}
 
-	var removeContact = function(callback) {
-		var query = Contact.ContactModel.findOne({_id: contact_id});
 
-		query.exec(function(err, contact) {
-			if (err) {
-				console.log(err);
-				return res.sendStatus(400);
-			}
+	var query = Contact.ContactModel.findOne({_id: contact_id});
 
-			if (contact != null) {
-				contact.remove();
-				console.log(null);
-				return res.sendStatus(200);
-			} else {
-				console.log("Contact not found!");
-			}
-		});
-	};
-	removeContact();
+	query.exec(function(err, contact) {
+		if (err) {
+			return res.sendStatus(400);
+		}
+
+		if (contact != null) {
+			contact.remove();
+			
+			return res.sendStatus(200);
+		} else {
+			console.log("Contact not found!");
+		}
+	});
 };

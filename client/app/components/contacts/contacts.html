@@ -12,18 +12,22 @@
       </thead>
       <tbody>
         <tr>
-          <td><input class="form-control" ng-model="contact.name"></td>
-          <td><input class="form-control" ng-model="contact.email"></td>
-          <td><input class="form-control" ng-model="contact.number"></td>
-          <td><button class="btn btn-primary" ng-click="addContact(contact)">Add Contact</button></td>
-          <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+          <td><input class="form-control" ng-model="newContact.name"></td>
+          <td><input class="form-control" ng-model="newContact.email"></td>
+          <td><input class="form-control" ng-model="newContact.number"></td>
+          <td><button class="btn btn-primary" ng-click="addContact(newContact)">Add Contact</button></td>
+          <td><button class="btn btn-info" ng-click="showContacts()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
         </tr>
-        <tr ng-repeat="contact in contacts">
-          <td>{{contact.name}}</td>
-          <td>{{contact.email}}</td>
-          <td>{{contact.number}}</td>
-          <td><button class="btn btn-danger" ng-click="deleteContact(contact)">Remove</button></td>
+        <tr ng-repeat="savedContact in savedContacts">
+          <span ng-init="showContacts()"></span>
+          <td>{{savedContact.name}}</td>
+          <td>{{savedContact.email}}</td>
+          <td>{{savedContact.number}}</td>
+          <td><button class="btn btn-danger" ng-click="deleteContact(savedContact)">Remove</button></td>
           <td><button class="btn btn-warning" ng-click="">Edit</button></td>
+        </tr>
+        <tr ng-if="savedContacts == false">
+        <td>No contacts to show!</td>
         </tr>
       </tbody>
     </table>

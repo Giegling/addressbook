@@ -13,13 +13,13 @@
 	  		
 	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav animated fadeIn">
-			        <li class="active"><a href="#/">მთავარი გვერდი</a></li>
-			        <li><a href="#/contacts">ჩვენ შესახებ</a></li>
+			        <li class="active"><a href="#/">Main Page</a></li>
+			        <li><a href="#/contacts">My Contacts</a></li>
 		      	</ul>
 
 		      	<ul ng-controller="PopupCtrl" class="nav navbar-nav navbar-right">
-			     	<li><a href="" ng-click="togglePopup('ავტორიზაცია', 'login')" class="animated fadeIn">ავტორიზაცია</a></li>
-			     	<li><a href="" ng-click="togglePopup('რეგისტრაცია', 'signup')" class="animated fadeIn">რეგისტრაცია</a></li>
+			     	<li><a href="" ng-click="togglePopup('Sign In', 'login')" class="animated fadeIn">Sign In</a></li>
+			     	<li><a href="" ng-click="togglePopup('Sign Up', 'signup')" class="animated fadeIn">Sign Up</a></li>
 			     	<modal visible="showPopup"><div ng-include="filePath"></div></modal>
  		      	</ul>
 			</div>

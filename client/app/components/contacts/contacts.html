@@ -3,10 +3,10 @@
 <table class="table animated fadeIn">
       <thead>
         <tr>
-          <th>სახელი</th>         
-          <th>ელ.ფოსტა</th>
-          <th>ნომერი</th>
-          <th>ბრძანება</th>
+          <th>Name</th>         
+          <th>E-Mail</th>
+          <th>Number</th>
+          <th>Action</th>
           <th>&nbsp;</th>
         </tr>
       </thead>
@@ -15,15 +15,15 @@
           <td><input class="form-control" ng-model="contact.name"></td>
           <td><input class="form-control" ng-model="contact.email"></td>
           <td><input class="form-control" ng-model="contact.number"></td>
-          <td><button class="btn btn-primary" ng-click="addContact(contact)">კონტაქტის დამატება</button></td>
-          <td><button class="btn btn-info" ng-click="update()">შესწორება</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">წაშლა</button></td>
+          <td><button class="btn btn-primary" ng-click="addContact(contact)">Add Contact</button></td>
+          <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
         </tr>
         <tr ng-repeat="contact in contacts">
           <td>{{contact.name}}</td>
           <td>{{contact.email}}</td>
           <td>{{contact.number}}</td>
-          <td><button class="btn btn-danger" ng-click="deleteContact(contact)">წაშლა</button></td>
-          <td><button class="btn btn-warning" ng-click="">შესწორება</button></td>
+          <td><button class="btn btn-danger" ng-click="deleteContact(contact)">Remove</button></td>
+          <td><button class="btn btn-warning" ng-click="">Edit</button></td>
         </tr>
       </tbody>
     </table>

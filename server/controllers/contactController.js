@@ -2,15 +2,17 @@
 
 var Contact = require('../models/contact.js');
 
-module.exports.createContact = function(req, res) {
+module.exports.create = function(req, res) {
 	var contact = req.body;
-
-	if (friend == null || friend.name == null || friend.name.trim().length == 0 ||friend.email == null) {
+	
+	if (contact.name == "" || contact.name.trim().length == 0 || contact.email == "" || contact.email.trim().length == 0 || contact.number == "" || contact.number.trim().length == 0) {
 		return res.send(400);
 	}
 
-	var contactEntry = new db.ContactSchema;
+	var contactEntry = new Contact.ContactModel();
 	contactEntry.name = contact.name.trim();
+	contactEntry.email = contact.email.trim();
+	contactEntry.number = contact.email.trim();
 
 	contactEntry.save(function(err) {
 		if (err) {
@@ -18,6 +20,6 @@ module.exports.createContact = function(req, res) {
 			return res.send(400);
 		}
 
-		return res.send(200, contactEntry);
+		return res.status(200).send(contactEntry);
 	})
 }

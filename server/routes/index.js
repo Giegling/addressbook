@@ -1,7 +1,7 @@
 "use strict";
 
 var express = require('express');
-var contactController = require('../controllers/contactController.js');
+var ContactController = require('../controllers/ContactController.js');
 
 var router = express.Router();
 
@@ -14,7 +14,7 @@ module.exports = function (app) {
 		next();
 	});
 
-	router.post('/api/contact', contactController.createContact);
+	router.post('/api/contact', ContactController.create);
 
 	return router;
 };

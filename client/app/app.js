@@ -1,19 +1,20 @@
 var app = angular.module('app', ['ngRoute']);
 
 app.config(function ($routeProvider) {
-
-
+	
 	$routeProvider
 
 		.when("/", {
+			controller: '',
 			templateUrl: "/components/home/home.html"
 		})
 		.when("/profile", {
+			controller: '',
 			templateUrl: "/components/profile/profile.html"
 		})
 		.when("/contacts", {
 			controller: 'ContactsController',
-			templateUrl: "/components/contacts/contacts.html"
+			templateUrl: "/components/contacts/contacts.html",
 		})
 });
 

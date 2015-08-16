@@ -1,6 +1,6 @@
 <div ng-include="'components/header/header-user-contacts.html'"></div>
 
-<table class="table animated fadeIn">
+<table class="table animated fadeIn" ng-init="showContacts()">
       <thead>
         <tr>
           <th>Name</th>         
@@ -19,7 +19,6 @@
           <td><button class="btn btn-info" ng-click="showContacts()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
         </tr>
         <tr ng-repeat="savedContact in savedContacts">
-          <span ng-init="showContacts()"></span>
           <td>{{savedContact.name}}</td>
           <td>{{savedContact.email}}</td>
           <td>{{savedContact.number}}</td>

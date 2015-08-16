@@ -15,7 +15,7 @@ module.exports = function (app) {
 	});
 
 	router.post('/api/contact/create', ContactController.create);
-	router.delete('/api/contact/remove', ContactController.remove);
+	router.delete('/api/contact/remove/:id', ContactController.remove);
 	router.get('/api/contact/read', ContactController.read);
 
 	return router;

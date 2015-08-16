@@ -28,7 +28,7 @@ angular.module('app').factory('ContactsService', ['$http', '$q', 'appSettings', 
 		remove: function(id) {
 			var deferred = $q.defer();
 			
-			$http.delete(appSettings.apiServiceBaseUri + '/contact/remove', id).success(function(data) {
+			$http.delete(appSettings.apiServiceBaseUri + '/contact/remove/' + id).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
 				deferred.reject(data);

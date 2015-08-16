@@ -15,15 +15,23 @@
           <td><input class="form-control" ng-model="newContact.name"></td>
           <td><input class="form-control" ng-model="newContact.email"></td>
           <td><input class="form-control" ng-model="newContact.number"></td>
-          <td><button class="btn btn-primary" ng-click="addContact(newContact)">Add Contact</button></td>
-          <td><button class="btn btn-info" ng-click="showContacts()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+          <td><button class="btn btn-primary" ng-click="addContact(newContact)"><i class="fa fa-check"></i> Add Contact</button></td>
+          <td><button class="btn btn-info" ng-click="deselect()">Clear</button></td>
         </tr>
         <tr ng-repeat="savedContact in savedContacts">
-          <td>{{savedContact.name}}</td>
-          <td>{{savedContact.email}}</td>
-          <td>{{savedContact.number}}</td>
-          <td><button class="btn btn-danger" ng-click="deleteContact(savedContact)">Remove</button></td>
-          <td><button class="btn btn-warning" ng-click="">Edit</button></td>
+
+            <td ng-hide="savedContact.editable" ng-show="!savedContact.editable">{{savedContact.name}}</td>
+            <td ng-hide="savedContact.editable" ng-show="!savedContact.editable">{{savedContact.email}}</td>
+            <td ng-hide="savedContact.editable" ng-show="!savedContact.editable">{{savedContact.number}}</td>
+
+            <td ng-hide="!savedContact.editable" ng-show="savedContact.editable"><input class="form-control" ng-model="newname" placeholder="{{ savedContact.name }}"></td>
+            <td ng-hide="!savedContact.editable" ng-show="savedContact.editable"><input class="form-control" ng-model="newemail" placeholder="{{ savedContact.email }}"></td>
+            <td ng-hide="!savedContact.editable" ng-show="savedContact.editable"><input class="form-control" ng-model="newnumber" placeholder="{{ savedContact.number }}"></td>
+      
+          <td ng-hide="!savedContact.editable" ng-show"savedContact.editable"><button class="btn btn-success" ng-click="editContact(newname, newemail, newnumber, savedContact)"><i class="fa fa-check"></i></button></td>
+          
+          <td><button class="btn btn-danger" ng-click="deleteContact(savedContact)"><i class="fa fa-times"></i> Remove</button>&nbsp;&nbsp;
+          <button class="btn btn-warning" ng-click="showEditContact(savedContact)"><i class="fa fa-pencil-square-o"></i> Edit</button></td>
         </tr>
         <tr ng-if="savedContacts == false">
         <td>No contacts to show!</td>

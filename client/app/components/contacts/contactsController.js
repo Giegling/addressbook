@@ -12,6 +12,7 @@ angular.module('app').controller('ContactsController', ['$scope', 'ContactsServi
 				ContactsService.create(contact).then(function(data) {
 					$scope.contacts.push(data);
 				}).then($scope.showContacts);
+				$scope.deselect();
 			}
 		};
 
@@ -73,14 +74,16 @@ angular.module('app').controller('ContactsController', ['$scope', 'ContactsServi
 
 		$scope.deselect = function() {
 			$scope.newContact = '';
+			$scope.avatar = './img/noimage.png';
 		};
 
 		$scope.readImage = function(element) {
-			var avatar = element.files[0];
 			var reader = new FileReader();
+
 			reader.onload = function(e) {
 				$scope.avatar = e.target.result;
-			};
-			reader.readAsDataURL(avatar);
+			}
+
+			reader.readAsDataURL(element.files[0]);
 		};
 }]);

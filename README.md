@@ -23,10 +23,11 @@ npm install
 cd assets
 bower install
 ```
-5.Run server
+5.Run MongoDB and then server
 ```
 #!bash
 
+mongod
 cd ../..
 npm start
 ```

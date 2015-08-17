@@ -13,6 +13,7 @@ module.exports.create = function(req, res) {
 	contactEntry.name = contact.name.trim();
 	contactEntry.email = contact.email.trim();
 	contactEntry.number = contact.number.trim();
+	contactEntry.avatar = contact.avatar;
 	contactEntry.editable = false;
 
 	contactEntry.save(function(err) {

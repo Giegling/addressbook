@@ -4,7 +4,7 @@ angular.module('app').controller('ContactsController', ['$scope', 'ContactsServi
 		$scope.contacts = [];
 
 		$scope.addContact = function(newContact) {
-			var contact = {name: newContact.name.trim(), email: newContact.email.trim(), number: newContact.number.trim()};
+			var contact = {name: newContact.name.trim(), email: newContact.email.trim(), number: newContact.number.trim(), avatar: $scope.avatar};
 			var promise = $scope.showContacts();
 			
 			if (contact.name != "" && contact.email != "" && contact.number != "") {
@@ -75,4 +75,12 @@ angular.module('app').controller('ContactsController', ['$scope', 'ContactsServi
 			$scope.newContact = '';
 		};
 
+		$scope.readImage = function(element) {
+			var avatar = element.files[0];
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$scope.avatar = e.target.result;
+			};
+			reader.readAsDataURL(avatar);
+		};
 }]);

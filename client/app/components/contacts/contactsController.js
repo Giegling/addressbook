@@ -41,7 +41,19 @@ angular.module('app').controller('ContactsController', ['$scope', 'ContactsServi
 		$scope.editContact = function(newname, newemail, newnumber, contact) {
 			var contacts = $scope.savedContacts;
 
-			if (newname == null || newemail == null || newnumber == null) {
+			if (newname == null || newname == '') {
+				newname = contact.name;
+			}
+
+			if (newemail == null || newemail == '') {
+				newemail = contact.email;
+			}
+
+			if (newnumber == null || newnumber == '') {
+				newnumber = contact.number;
+			}
+			
+			if (newname == contact.name && newemail == contact.email && newnumber == contact.number) {
 				for (var i in contacts) {
 					$scope.savedContacts[i].editable = false;
 				}
@@ -64,6 +76,7 @@ angular.module('app').controller('ContactsController', ['$scope', 'ContactsServi
 				}
 
 			}
+			
 		};
 
 		$scope.deleteContact = function(contact) {

@@ -1,6 +1,7 @@
 <div ng-include="'components/header/header-user-contacts.html'"></div>
 
 <table class="table animated fadeIn" ng-init="showContacts();deselect()">
+  <input type="text" class="form-control search-bar" placeholder="Contact search..." ng-model="search">
       <thead>
         <tr>
           <th>Avatar</th>
@@ -21,7 +22,7 @@
           <td><button class="btn btn-primary" ng-click="addContact(newContact)"><i class="fa fa-check"></i> Add Contact</button></td>
           <td><button class="btn btn-info" ng-click="deselect()">Clear</button></td>
         </tr>
-        <tr ng-repeat="savedContact in savedContacts">
+        <tr ng-repeat="savedContact in savedContacts | filter:search">
           <td ng-hide="savedContact.editable" ng-show="!savedContact.editable"><img class="img-circle zoom" ng-src="{{ savedContact.avatar }}" width="30" height="30"></td>
           <td ng-hide="savedContact.editable" ng-show="!savedContact.editable">{{savedContact.name}}</td>
           <td ng-hide="savedContact.editable" ng-show="!savedContact.editable">{{savedContact.email}}</td>

@@ -46,3 +46,15 @@ body {
    -o-transform:scale(1.5);
     transform:scale(1.5);
 }
+
+h4 {
+  color: #000; 
+}
+
+h4 span {
+color: #555; margin-left: 22px;
+}
+
+.search-bar {
+position: absolute; top: 1%; right: 1%; width: 20%;
+}

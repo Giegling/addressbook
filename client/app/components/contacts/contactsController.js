@@ -1,18 +1,22 @@
 angular.module('app').controller('ContactsController', ['$scope', 'ContactsService', function($scope, ContactsService) {
-		var data = {};
-		
-		$scope.contacts = [];
 
 		$scope.addContact = function(newContact) {
-			var contact = {name: newContact.name.trim(), email: newContact.email.trim(), number: newContact.number.trim(), avatar: $scope.avatar};
-			var promise = $scope.showContacts();
-			
-			if (contact.name != "" && contact.email != "" && contact.number != "") {
 
-				ContactsService.create(contact).then(function(data) {
-					$scope.contacts.push(data);
-				}).then($scope.showContacts);
-				$scope.deselect();
+			if (newContact.name == undefined && newContact.email == undefined && newContact.number == undefined) {
+				// Do nothing
+			} else {
+
+				var contact = {name: newContact.name.trim(), email: newContact.email.trim(), number: newContact.number.trim(), avatar: $scope.avatar};
+				$scope.contacts = [];
+
+				if (contact.name.length != 0 && contact.email.length != 0 && contact.length != 0) {
+
+					ContactsService.create(contact).then(function(data) {
+						$scope.contacts.push(data);
+					}).then($scope.showContacts);
+					$scope.deselect();
+				}
+
 			}
 		};
 
@@ -41,15 +45,15 @@ angular.module('app').controller('ContactsController', ['$scope', 'ContactsServi
 		$scope.editContact = function(newname, newemail, newnumber, contact) {
 			var contacts = $scope.savedContacts;
 
-			if (newname == null || newname == '') {
+			if (newname == null || newname == '' || newname.trim().length == 0) {
 				newname = contact.name;
 			}
 
-			if (newemail == null || newemail == '') {
+			if (newemail == null || newemail == '' || newemail.trim().length == 0) {
 				newemail = contact.email;
 			}
 
-			if (newnumber == null || newnumber == '') {
+			if (newnumber == null || newnumber == '' || newnumber.trim().length == 0) {
 				newnumber = contact.number;
 			}
 			

@@ -17,10 +17,10 @@
 			        <li><a href="#/contacts">My Contacts</a></li>
 		      	</ul>
 
-		      	<ul ng-controller="PopupCtrl" class="nav navbar-nav navbar-right">
+		      	<ul class="nav navbar-nav navbar-right">
 			     	<li><a href="" ng-click="togglePopup('Sign In', 'login')" class="animated fadeIn">Sign In</a></li>
-			     	<li><a href="" ng-click="togglePopup('Sign Up', 'signup')" class="animated fadeIn">Sign Up</a></li>
-			     	<modal visible="showPopup"><div ng-include="filePath"></div></modal>
+			     	<li ng-controller="SignupController"><a href="" ng-click="togglePopup()" class="animated fadeIn">Sign Up</a>
+			     	<modal visible="showPopup"></modal></li>
  		      	</ul>
 			</div>
 	  	</div>

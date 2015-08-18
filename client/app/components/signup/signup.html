@@ -1,6 +1,23 @@
-<div class="form-group">
-	<input type="email" class="form-control" placeholder="E-Mail" data-ng-model="registration.username" required autofocus><br>
-	<input type="password" class="form-control" placeholder="Password" data-ng-model="registration.password" required><br>
-	<input type="password" class="form-control" placeholder="Confirm Password" data-ng-model="registration.confirmPassword" required><br>
-	<button type="submit" class="btn btn-md btn-info btn-block" data-ng-click="signUp()">Sign Up</button>
+<div class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="form-group"  ng-controller="SignupController">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Sign Up</h4>
+				</div>
+				<div class="modal-body">
+					<input class="form-control" placeholder="E-Mail" data-ng-model="newUser.email" required autofocus><br>
+					<input type="password" class="form-control" placeholder="Password" data-ng-model="newUser.password" required><br>
+					<input type="password" class="form-control" placeholder="Confirm Password" data-ng-model="newUser.confirmPassword" required><br>
+					<button type="submit" class="btn btn-md btn-info btn-block" data-ng-click="addUser(newUser)">Sign Up</button>
+
+					<div ng-show="signupError_1" ng-hide="!signupError_1">Incorrect email!</div>
+					<div ng-show="signupError_2" ng-hide="!signupError_2">Incorrect password!</div>
+					<div ng-show="signupError_3" ng-hide="!signupError_3">Incorrect confirmation password!</div>
+					<div ng-show="signupError_4" ng-hide="!signupError_4">Your password and confirmation password don't match!</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

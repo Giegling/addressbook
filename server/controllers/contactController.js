@@ -5,7 +5,7 @@ var Contact = require('../models/contact.js');
 module.exports.create = function(req, res) {
 	var contact = req.body;
 	
-	if (contact.name == "" || contact.name.trim().length == 0 || contact.email == "" || contact.email.trim().length == 0 || contact.number == "" || contact.number.trim().length == 0) {
+	if (contact.name.trim().length == 0 || contact.email.trim().length == 0 || contact.number.trim().length == 0) {
 		return res.sendStatus(400);
 	}
 
@@ -18,7 +18,6 @@ module.exports.create = function(req, res) {
 
 	contactEntry.save(function(err) {
 		if (err) {
-			console.log(err);
 			return res.sendStatus(400);
 		}
 

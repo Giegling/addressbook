@@ -1,18 +1,6 @@
-app.controller('PopupCtrl', function ($scope) {
-  $scope.showPopup = false;
-  $scope.buttonClicked = "";
-  $scope.togglePopup = function(btnClicked, path) {
-    $scope.buttonClicked = btnClicked;
-    $scope.showPopup = !$scope.showPopup;
-    $scope.filePath = '/components/' + path + '/' + path + '.html';
-
-    return btnClicked;
-  };
-});
-
 app.directive('modal', function () {
     return {
-      templateUrl: 'components/popup/popup.html',
+      templateUrl: 'components/signup/signup.html',
       restrict: 'E',
       transclude: true,
       replace:true,

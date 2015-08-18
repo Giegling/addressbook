@@ -2,6 +2,7 @@
 
 var express = require('express');
 var ContactController = require('../controllers/ContactController.js');
+var SignupController = require('../controllers/SignupController.js');
 
 var router = express.Router();
 
@@ -14,6 +15,9 @@ module.exports = function (app) {
 		next();
 	});
 
+	router.post('/api/signup', SignupController.create);
+
+	// CONTACTS ROUTES
 	router.post('/api/contact/create', ContactController.create);
 	router.put('/api/contact/update', ContactController.update);
 	router.delete('/api/contact/remove/:id', ContactController.remove);

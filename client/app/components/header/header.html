@@ -18,9 +18,10 @@
 		      	</ul>
 
 		      	<ul class="nav navbar-nav navbar-right">
-			     	<li><a href="" ng-click="togglePopup('Sign In', 'login')" class="animated fadeIn">Sign In</a></li>
+			     	<li ng-controller="SigninController"><a href="" ng-click="togglePopup()" class="animated fadeIn">Sign In</a>
+			     	<modal visible="showPopup"><div ng-include="'/components/signin/signin.html'"></modal></li>
 			     	<li ng-controller="SignupController"><a href="" ng-click="togglePopup()" class="animated fadeIn">Sign Up</a>
-			     	<modal visible="showPopup"></modal></li>
+			     	<modal visible="showPopup"><div ng-include="'/components/signup/signup.html'"></modal></li>
  		      	</ul>
 			</div>
 	  	</div>

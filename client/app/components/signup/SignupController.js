@@ -28,15 +28,8 @@ angular.module('app').controller('SignupController', ['$scope', 'SignupService',
 
 		if (newUser.email != undefined && newUser.password != undefined && newUser.confirmPassword != undefined) {
 
-			if(newUser.email.trim().length != 0 && newUser.password.trim().length != 0 && newUser.confirmPassword.trim().length != 0 && newUser.password == newUser.confirmPassword) {
-				var user = {email: newUser.email.trim(), password: newUser.password.trim()};
-				$scope.users = [];
-
-				if (user.email.length != 0 && user.password.length != 0) {
-					SignupService.create(user).then(function(data) {
-						$scope.users.push(data);
-					});
-				}
+			if (newUser.email.trim().length != 0 && newUser.password.trim().length != 0 && newUser.confirmPassword.trim().length != 0 && newUser.password == newUser.confirmPassword) {
+				SignupService.create(newUser);
 			}
 
 		}

@@ -3,6 +3,7 @@
 var express = require('express');
 var ContactController = require('../controllers/ContactController.js');
 var SignupController = require('../controllers/SignupController.js');
+var SigninController = require('../controllers/SigninController.js');
 
 var router = express.Router();
 
@@ -16,6 +17,7 @@ module.exports = function (app) {
 	});
 
 	router.post('/api/signup', SignupController.create);
+	router.post('/api/signin', SigninController.check);
 
 	// CONTACTS ROUTES
 	router.post('/api/contact/create', ContactController.create);

@@ -1,23 +1,36 @@
 'use strict';
 
+var bcrypt = require('bcryptjs');
 var User = require('../models/user.js');
 
 module.exports.create = function(req, res) {
-	var user = req.body;
+	var newUser = req.body;
 
-	if (user.email.trim().length == 0 || user.password.trim().length == 0) {
-		return res.sendStatus(400);
-	}
+	User.UserModel.find(newUser.email, function(err, users) {
+		var checkEmail = users[0].email;
+		
+		if (checkEmail != newUser.email) {
+				bcrypt.genSalt(10, function(err, salt) {
+				    bcrypt.hash(newUser.password, salt, function(err, hash) {
+				       	newUser.password = hash;
+				       
+				       	var userEntry = new User.UserModel();
+						userEntry.email = newUser.email;
+						userEntry.password = newUser.password;
 
-	var userEntry = new User.UserModel();
-	userEntry.email = user.email.trim();
-	userEntry.password = user.password.trim();
+						userEntry.save(function(err) {
+							if (err) {
+								return res.sendStatus(400);
+							}
 
-	userEntry.save(function(err) {
-		if (err) {
-			return res.sendStatus(400);
-		}
+							return res.sendStatus(200).send(userEntry);
+						});
+				    });
+			});
 
-		return res.sendStatus(200).send(userEntry);
+		}		
 	});
+
+
+	
 };

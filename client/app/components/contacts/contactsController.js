@@ -103,4 +103,5 @@ angular.module('app').controller('ContactsController', ['$scope', 'ContactsServi
 
 			reader.readAsDataURL(element.files[0]);
 		};
+		
 }]);

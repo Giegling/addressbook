@@ -1,6 +1,7 @@
 app.directive('modal', function () {
+  var path;
     return {
-      templateUrl: 'components/signup/signup.html',
+      templateUrl: 'components/popup/popup.html',
       restrict: 'E',
       transclude: true,
       replace:true,
@@ -26,4 +27,4 @@ app.directive('modal', function () {
         });
       }
     };
-  });
+});

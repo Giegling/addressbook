@@ -34,11 +34,6 @@ module.exports.read = function(req, res) {
 module.exports.update = function(req, res) {
 	var contact = req.body;
 
-	if (contact == null || contact._id == null || contact.name.trim().length == 0 || contact.email.trim().length == 0 || contact.number.trim().length == 0) {
-		
-		res.sendStatus(400);
-	}
-
 	var query = Contact.ContactModel.findOne({_id: contact._id});
 	query.update({name: contact.name.trim(), email: contact.email.trim(), number: contact.number.trim()},
 	function(err, nbRows, raw) {

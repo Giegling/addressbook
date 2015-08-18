@@ -34,8 +34,7 @@ angular.module('app').controller('ContactsController', ['$scope', 'ContactsServi
 			for (var i in contacts) {
 				if (contacts[i]._id == contact._id) {
 					$scope.savedContacts[i].editable = true;
-				} else {
-					if (contacts[i].editable) {
+				} else if (contacts[i].editable) {
 						$scope.savedContacts[i].editable = false;
 					}
 				}

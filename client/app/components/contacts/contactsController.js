@@ -38,6 +38,7 @@ angular.module('app').controller('ContactsController', ['$scope', '$location', '
 
 		$scope.showEditContact = function(contact) {
 			var contacts = $scope.savedContacts;
+			$scope.deselect();
 
 			for (var i in contacts) {
 				if (contacts[i]._id == contact._id) {
@@ -96,6 +97,7 @@ angular.module('app').controller('ContactsController', ['$scope', '$location', '
 		};
 
 		$scope.deselect = function() {
+			$scope.contactNew = {name: '', email: '', number: ''};
 			$scope.newContact = '';
 			$scope.avatar = './img/noimage.png';
 		};
@@ -111,7 +113,7 @@ angular.module('app').controller('ContactsController', ['$scope', '$location', '
 		};
 
 		$scope.logout = function() {
-		$cookies.remove('isLogged');
-	}
+			$cookies.remove('isLogged');
+		};
 		
 }]);

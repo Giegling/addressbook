@@ -17,7 +17,6 @@ angular.module('app').factory('ContactsService', ['$http', '$q', 'appSettings', 
 
 			$http.get(appSettings.apiServiceBaseUri + '/contact/read').success(function(data) {
 				deferred.resolve(data);
-				return data;
 			}).error(function(data, status) {
 				deferred.reject(data);
 			});

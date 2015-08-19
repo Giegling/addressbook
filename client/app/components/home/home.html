@@ -1,6 +1,2 @@
-<div ng-include="'components/header/header.html'"></div>
-<div class="container">
-	<div class="jumbotron animated fadeIn text-center">
-		<h2>Please Sign In</h2>
-	</div>
-</div>
+<div ng-show="!isLogged" ng-hide="isLogged"><div ng-include="'/components/home/home-guest.html'"></div></div>
+<div ng-show="isLogged" ng-hide="!isLogged"><div ng-include="'/components/home/home-user.html'"></div></div>

@@ -1,4 +1,12 @@
-angular.module('app').controller('ContactsController', ['$scope', 'ContactsService', function($scope, ContactsService) {
+angular.module('app').controller('ContactsController', ['$scope', '$location', '$cookies', 'ContactsService', function($scope, $location, $cookies, ContactsService) {
+
+		var isLogged = $cookies.get('isLogged');
+
+		if (isLogged == undefined) {
+			$location.path("/");
+		} else if (isLogged == true) {
+			console.log("ASD")
+		}
 
 		$scope.addContact = function(newContact) {
 
@@ -101,5 +109,9 @@ angular.module('app').controller('ContactsController', ['$scope', 'ContactsServi
 
 			reader.readAsDataURL(element.files[0]);
 		};
+
+		$scope.logout = function() {
+		$cookies.remove('isLogged');
+	}
 		
 }]);

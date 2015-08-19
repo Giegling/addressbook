@@ -1,11 +1,11 @@
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute', 'ngCookies']);
 
 app.config(function ($routeProvider) {
 	
 	$routeProvider
 
 		.when("/", {
-			controller: '',
+			controller: 'HomeController',
 			templateUrl: "/components/home/home.html"
 		})
 		.when("/profile", {
@@ -16,6 +16,7 @@ app.config(function ($routeProvider) {
 			controller: 'ContactsController',
 			templateUrl: "/components/contacts/contacts.html",
 		})
+
 });
 
 app.constant('appSettings', {

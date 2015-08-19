@@ -1,4 +1,4 @@
-angular.module('app').controller('SigninController', ['$scope', 'SigninService', function($scope, SigninService) {
+angular.module('app').controller('SigninController', ['$scope', '$cookies', 'SigninService', 'HomeService', function($scope, $cookies, SigninService, HomeService) {
 
 	$scope.sendUser = function (User) {
 		$scope.User = User;
@@ -28,6 +28,8 @@ angular.module('app').controller('SigninController', ['$scope', 'SigninService',
 						$scope.signinError_3 = false;
 						$scope.signinError_4 = false;
 						$scope.closePopup();
+						$cookies.put('isLogged', 'true');
+						$scope.checkLogged();
 				}
 			});
 		}
@@ -45,5 +47,10 @@ angular.module('app').controller('SigninController', ['$scope', 'SigninService',
 		$scope.showPopup = false;
 		$scope.class = 'animated bounceOut';
 	};
+
+	$scope.logout = function() {
+		$cookies.remove('isLogged');
+		$scope.checkLogged();
+	}
 
 }]);

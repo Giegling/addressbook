@@ -1,5 +1,4 @@
 app.directive('modal', function () {
-  var path;
     return {
       templateUrl: 'components/popup/popup.html',
       restrict: 'E',

@@ -1,6 +1,6 @@
 # Installation #
 
-1.Make a clone of this repository - https://github.com/brulla/addressbook.git
+1.Make a clone of this repository - https://github.com/Giegling/addressbook.git
 
 2.Install node modules for server
 ```

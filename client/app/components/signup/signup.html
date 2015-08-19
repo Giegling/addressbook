@@ -1,4 +1,4 @@
-<div class="form-group"  ng-controller="SignupController">
+<div class="form-group">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		<h4 class="modal-title">Sign Up</h4>
@@ -13,5 +13,6 @@
 		<div ng-show="signupError_2" ng-hide="!signupError_2">Incorrect password!</div>
 		<div ng-show="signupError_3" ng-hide="!signupError_3">Incorrect confirmation password!</div>
 		<div ng-show="signupError_4" ng-hide="!signupError_4">Your password and confirmation password don't match!</div>
+		<div ng-show="signupError_5" ng-hide="!signupError_5">Email already exists!</div>
 	</div>
 </div>

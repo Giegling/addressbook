@@ -2,19 +2,19 @@ angular.module('app').controller('SignupController', ['$scope', 'SignupService',
 
 	$scope.addUser = function (newUser) {
 		
-		if (newUser.email == undefined) {
+		if (newUser.email == undefined || newUser.email == '') {
 			$scope.signupError_1 = true;
 		} else {
 			$scope.signupError_1 = false;
 		}
 
-		if (newUser.password == undefined) {
+		if (newUser.password == undefined || newUser.password == '') {
 			$scope.signupError_2 = true;
 		} else {
 			$scope.signupError_2 = false;
 		}
 
-		if (newUser.confirmPassword == undefined) {
+		if (newUser.confirmPassword == undefined || newUser.confirmPassword == '') {
 			$scope.signupError_3 = true;
 		} else {
 			$scope.signupError_3 = false;
@@ -26,24 +26,31 @@ angular.module('app').controller('SignupController', ['$scope', 'SignupService',
 			$scope.signupError_4 = false;
 		}
 
-		if (newUser.email != undefined && newUser.password != undefined && newUser.confirmPassword != undefined) {
+		if (newUser.email != undefined && newUser.email != '' && newUser.password != undefined && newUser.password != '' && newUser.confirmPassword != undefined && newUser.confirmPassword != '') {
 
-			if (newUser.email.trim().length != 0 && newUser.password.trim().length != 0 && newUser.confirmPassword.trim().length != 0 && newUser.password == newUser.confirmPassword) {
-				SignupService.create(newUser);
-			}
+			SignupService.create(newUser).then(function(data) {
+				if (data == 'email') {
+					$scope.signupError_5 = true;
+				} else {
+					$scope.signupError_5 = false;
+					$scope.closePopup();
+				}
+			});
 
 		}
 		
 	};
 
-	$scope.clearSignup = function() {
-		$scope.newUser = {};
-		$scope.signupError_1 = $scope.signupError_2 = $scope.signupError_3 = $scope.signupError_4 = false;
-	};
-
 	$scope.togglePopup = function() {
-	    $scope.clearSignup();
+		$scope.class = '';
+	    $scope.newUser = {};
+		$scope.signupError_1 = $scope.signupError_2 = $scope.signupError_3 = $scope.signupError_4 = $scope.signupError_5 = false;
 	    $scope.showPopup = true;
   	};
+
+  	$scope.closePopup = function() {
+		$scope.showPopup = false;
+		$scope.class = 'animated bounceOut';
+	};
 
 }]);

@@ -1,32 +1,49 @@
 angular.module('app').controller('SigninController', ['$scope', 'SigninService', function($scope, SigninService) {
 
 	$scope.sendUser = function (User) {
+		$scope.User = User;
 
-		if (User.email == undefined) {
+		if (User.email == undefined || User.email == '') {
 			$scope.signinError_1 = true;
 		} else {
 			$scope.signinError_1 = false;
 		}
 
-		if (User.password == undefined) {
+		if (User.password == undefined || User.password == '') {
 			$scope.signinError_2 = true;
 		} else {
 			$scope.signinError_2 = false;
 		}
 
-		if (User.email != undefined && User.password != undefined) {
-
-			if (User.email.trim().length != 0 && User.password.trim().length != 0) {
-				SigninService.read(User);
-			}
-
+		if (User.email != undefined && User.email != '' && User.password != undefined && User.password != '') {
+			SigninService.read(User).then(function(data) {
+				switch (data) {
+					case 'email':
+						$scope.signinError_3 = true;
+						break;
+					case 'password':
+						$scope.signinError_4 = true;
+						break;
+					default:
+						$scope.signinError_3 = false;
+						$scope.signinError_4 = false;
+						$scope.closePopup();
+				}
+			});
 		}
-
-		$scope.showPopup = false;
 
 	};
 
 	$scope.togglePopup = function() {
+		$scope.class = '';
+		$scope.User = {};
+		$scope.signinError_1 = $scope.signinError_2 = $scope.signinError_3 = $scope.signinError_4 = false;
 		$scope.showPopup = true;
-	}
-}])
+	};
+
+	$scope.closePopup = function() {
+		$scope.showPopup = false;
+		$scope.class = 'animated bounceOut';
+	};
+
+}]);

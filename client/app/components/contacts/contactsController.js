@@ -38,8 +38,7 @@ angular.module('app').controller('ContactsController', ['$scope', 'ContactsServi
 						$scope.savedContacts[i].editable = false;
 					}
 				}
-			}
-		};
+			};
 
 		$scope.editContact = function(newname, newemail, newnumber, contact) {
 			var contacts = $scope.savedContacts;

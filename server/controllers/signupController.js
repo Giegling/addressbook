@@ -28,7 +28,9 @@ module.exports.create = function(req, res) {
 				    });
 			});
 
-		}		
+		} else {
+			return res.send('email');
+		}	
 	});
 
 

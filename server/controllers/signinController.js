@@ -5,17 +5,19 @@ var User = require('../models/user.js');
 
 module.exports.check = function(req, res) {
 	var user = req.body;
+	
+	User.UserModel.findOne({'email': user.email}, function(err, obj) { 
 
-	User.UserModel.find(user.email, function(err, users) {
-		if (user.email != users[0].email) {
+		if (user.email != obj.email) {
 			var error = 'email';
 			return res.send(error);
 		}
-		var checkPassword = users[0].password;
+
+		var checkPassword = obj.password;
 
 		bcrypt.compare(user.password, checkPassword, function(err, resolution) {	
 			if (resolution) {
-				var user = {email: users[0].email};
+				var user = {email: obj.email};
 
 				return res.send(user);
 			} else {

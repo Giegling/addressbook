@@ -6,9 +6,9 @@
         <tr>
           <th>Avatar</th>
           <!-- <th>&nbsp;</th> -->
-          <th>Name</th>         
-          <th>E-Mail</th>
-          <th>Number</th>
+          <th><a href="" ng-click="order('name')">Name</a></th>         
+          <th><a href="" ng-click="order('email')">E-Mail</a></th>
+          <th><a href="" ng-click="order('number')">Number</a></th>
           <th>Actions</th>
           <th>&nbsp;</th>
         </tr>
@@ -22,7 +22,7 @@
           <td><button class="btn btn-primary" ng-click="addContact(newContact)"><i class="fa fa-check"></i> Add Contact</button></td>
           <td><button class="btn btn-info" ng-click="deselect()">Clear</button></td>
         </tr>
-        <tr ng-repeat="savedContact in savedContacts | filter:search">
+        <tr ng-repeat="savedContact in savedContacts | filter:search | orderBy:predicate:reverse">
           <td ng-hide="savedContact.editable" ng-show="!savedContact.editable"><img class="img-circle zoom" ng-src="{{ savedContact.avatar }}" width="30" height="30"></td>
           <td ng-hide="savedContact.editable" ng-show="!savedContact.editable">{{savedContact.name}}</td>
           <td ng-hide="savedContact.editable" ng-show="!savedContact.editable">{{savedContact.email}}</td>

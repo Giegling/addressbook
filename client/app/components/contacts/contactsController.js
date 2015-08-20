@@ -4,8 +4,6 @@ angular.module('app').controller('ContactsController', ['$scope', '$location', '
 
 		if (isLogged == undefined) {
 			$location.path("/");
-		} else if (isLogged == true) {
-			console.log("ASD")
 		}
 
 		$scope.addContact = function(newContact) {
@@ -114,6 +112,11 @@ angular.module('app').controller('ContactsController', ['$scope', '$location', '
 
 		$scope.logout = function() {
 			$cookies.remove('isLogged');
+		};
+
+		$scope.order = function(predicate) {
+			$scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse: false;
+			$scope.predicate = predicate;
 		};
 		
 }]);

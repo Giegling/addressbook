@@ -29,11 +29,17 @@ angular.module('app').controller('SignupController', ['$scope', 'SignupService',
 		if (newUser.email != undefined && newUser.email != '' && newUser.password != undefined && newUser.password != '' && newUser.confirmPassword != undefined && newUser.confirmPassword != '') {
 
 			SignupService.create(newUser).then(function(data) {
-				if (data == 'email') {
-					$scope.signupError_5 = true;
-				} else {
-					$scope.signupError_5 = false;
-					$scope.closePopup();
+				switch (data) {
+					case 'email-exists':
+						$scope.signupError_5 = true;
+						break;
+					case 'email-invalid':
+						$scope.signupError_1 = true;
+						break;
+					default:
+						$scope.signupError_1 = false;
+						$scope.signupError_5 = false;
+						$scope.closePopup();
 				}
 			});
 

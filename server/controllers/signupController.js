@@ -2,6 +2,7 @@
 
 var bcrypt = require('bcryptjs');
 var User = require('../models/user.js');
+var validator = require('mailgun-email-validation');
 var api_key = 'key-ddaf59a80dcdd35a4228f65b2288bc37';
 var domain = 'sandboxc252008f3a4b492e898566920347fa35.mailgun.org';
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
@@ -16,67 +17,75 @@ module.exports.create = function(req, res) {
 		text: 'Registration successfully completed! Now you can sign into your account. http://localhost:3000'
 	};
 
-	User.UserModel.findOne({'email': newUser.email}, function(err, obj) {
+	validator.check(newUser.email, function(err, valid) {
+		if (valid) {
 
-		if (obj == null) {
-				bcrypt.genSalt(10, function(err, salt) {
-					    bcrypt.hash(newUser.password, salt, function(err, hash) {
-					       	newUser.password = hash;
-					       
-					       	var userEntry = new User.UserModel();
-							userEntry.email = newUser.email;
-							userEntry.password = newUser.password;
+			User.UserModel.findOne({'email': newUser.email}, function(err, obj) {
 
-							userEntry.save(function(err) {
-								if (err) {
-									return res.sendStatus(400);
-								}
+				if (obj == null) {
+						bcrypt.genSalt(10, function(err, salt) {
+							    bcrypt.hash(newUser.password, salt, function(err, hash) {
+							       	newUser.password = hash;
+							       
+							       	var userEntry = new User.UserModel();
+									userEntry.email = newUser.email;
+									userEntry.password = newUser.password;
 
-								mailgun.messages().send(mail, function (error, body) {
-									if (error) {
-										console.log(error);
-									}
-								});
+									userEntry.save(function(err) {
+										if (err) {
+											return res.sendStatus(400);
+										}
 
-								return res.sendStatus(200).send(userEntry);
-							});
-					    });
-				});
-			} else if (obj != null){
-				var checkEmail = obj.email;
+										mailgun.messages().send(mail, function (error, body) {
+											if (error) {
+												console.log(error);
+											}
+										});
 
-				if (checkEmail != newUser.email) {
-					bcrypt.genSalt(10, function(err, salt) {
-					    bcrypt.hash(newUser.password, salt, function(err, hash) {
-					       	newUser.password = hash;
-					       
-					       	var userEntry = new User.UserModel();
-							userEntry.email = newUser.email;
-							userEntry.password = newUser.password;
-							userEntry.isLogged = false;
+										return res.sendStatus(200).send(userEntry);
+									});
+							    });
+						});
+					} else if (obj != null){
+						var checkEmail = obj.email;
 
-							userEntry.save(function(err) {
-								if (err) {
-									return res.sendStatus(400);
-								}
+						if (checkEmail != newUser.email) {
+							bcrypt.genSalt(10, function(err, salt) {
+							    bcrypt.hash(newUser.password, salt, function(err, hash) {
+							       	newUser.password = hash;
+							       
+							       	var userEntry = new User.UserModel();
+									userEntry.email = newUser.email;
+									userEntry.password = newUser.password;
+									userEntry.isLogged = false;
 
-								mailgun.messages().send(mail, function (error, body) {
-									if (error) {
-										console.log(error);
-									}
-								});
+									userEntry.save(function(err) {
+										if (err) {
+											return res.sendStatus(400);
+										}
 
-								return res.sendStatus(200).send(userEntry);
-							});
-					    });
-				});
+										mailgun.messages().send(mail, function (error, body) {
+											if (error) {
+												console.log(error);
+											}
+										});
 
-				} else {
-					return res.send('email');
-				}
-			}
-			
-	});
+										return res.sendStatus(200).send(userEntry);
+									});
+							    });
+						});
+
+						} else {
+							return res.send('email-exists');
+						}
+					}
+					
+			});
+
+		} else {
+			return res.send('email-invalid');
+		}
+	})
 
 };
 

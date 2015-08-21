@@ -9,9 +9,9 @@
 		<input type="password" class="form-control" placeholder="Confirm Password" data-ng-model="newUser.confirmPassword" required><br>
 		<button type="submit" class="btn btn-md btn-info btn-block" data-ng-click="addUser(newUser)">Sign Up</button>
 
-		<div ng-show="signupError_1" ng-hide="!signupError_1">Incorrect email!</div>
-		<div ng-show="signupError_2" ng-hide="!signupError_2">Incorrect password!</div>
-		<div ng-show="signupError_3" ng-hide="!signupError_3">Incorrect confirmation password!</div>
+		<div ng-show="signupError_1" ng-hide="!signupError_1">Invalid email!</div>
+		<div ng-show="signupError_2" ng-hide="!signupError_2">Invalid password!</div>
+		<div ng-show="signupError_3" ng-hide="!signupError_3">Invalid confirmation password!</div>
 		<div ng-show="signupError_4" ng-hide="!signupError_4">Your password and confirmation password don't match!</div>
 		<div ng-show="signupError_5" ng-hide="!signupError_5">Email already exists!</div>
 	</div>

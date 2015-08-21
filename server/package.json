@@ -9,6 +9,7 @@
     "body-parser": "^1.13.3",
     "crypto": "0.0.3",
     "express": "^4.13.3",
+    "mailgun-email-validation": "0.0.3",
     "mailgun-js": "^0.7.0",
     "mongoose": "^4.1.2",
     "morgan": "1.5.3",

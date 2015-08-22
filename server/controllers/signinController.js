@@ -8,6 +8,11 @@ module.exports.check = function(req, res) {
 	
 	User.UserModel.findOne({'email': user.email}, function(err, obj) { 
 
+		if (obj == null) {
+			var error = 'email';
+			return res.send(error);
+		}
+
 		if (user.email != obj.email) {
 			var error = 'email';
 			return res.send(error);

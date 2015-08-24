@@ -4,6 +4,7 @@ var express = require('express');
 var ContactController = require('../controllers/ContactController.js');
 var SignupController = require('../controllers/SignupController.js');
 var SigninController = require('../controllers/SigninController.js');
+var ProfileController = require('../controllers/ProfileController.js');
 
 var router = express.Router();
 
@@ -16,6 +17,7 @@ module.exports = function (app) {
 		next();
 	});
 
+	// SIGNUP && SIGNIN ROUTES
 	router.post('/api/signup', SignupController.create);
 	router.post('/api/signin', SigninController.check);
 
@@ -24,6 +26,9 @@ module.exports = function (app) {
 	router.put('/api/contact/update', ContactController.update);
 	router.delete('/api/contact/remove/:id', ContactController.remove);
 	router.get('/api/contact/read', ContactController.read);
+
+	// PROFILE ROUTES
+	router.get('/api/profile/check', ProfileController.check);
 
 	return router;
 };

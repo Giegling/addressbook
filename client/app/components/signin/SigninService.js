@@ -5,7 +5,6 @@ angular.module('app').factory('SigninService', ['$http', '$q', 'appSettings', fu
 
 			$http.post(appSettings.apiServiceBaseUri + '/signin', user).success(function(data) {
 				deferred.resolve(data);
-				return data;
 			}).error(function(data, status) {
 				deferred.reject(data);
 			});

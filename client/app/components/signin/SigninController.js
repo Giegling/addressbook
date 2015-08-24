@@ -29,6 +29,7 @@ angular.module('app').controller('SigninController', ['$scope', '$cookies', 'Sig
 						$scope.signinError_4 = false;
 						$scope.closePopup();
 						$cookies.put('isLogged', 'true');
+						$cookies.put('user_id', data)
 						$scope.checkLogged();
 				}
 			});
@@ -50,6 +51,7 @@ angular.module('app').controller('SigninController', ['$scope', '$cookies', 'Sig
 
 	$scope.logout = function() {
 		$cookies.remove('isLogged');
+		$cookies.remove('user_id');
 		$scope.checkLogged();
 	}
 

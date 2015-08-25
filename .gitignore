@@ -45,3 +45,4 @@ Temporary Items
 server/node_modules
 client/node_modules
 client/assets/bower_components
+node_modules

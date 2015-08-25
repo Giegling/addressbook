@@ -23,9 +23,6 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-        'server/node-modules',
-        'client/node-modules',
-        'client/assets/bower_components'
     ],
 
 

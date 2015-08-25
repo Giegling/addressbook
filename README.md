@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Giegling/addressbook.svg?branch=master)](https://travis-ci.org/Giegling/addressbook)
+
 # Installation #
 
 1.Make a clone of this repository - https://github.com/Giegling/addressbook.git

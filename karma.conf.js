@@ -18,7 +18,7 @@ module.exports = function(config) {
         'karma-firefox-launcher',
         'karma-safari-launcher',
         'karma-opera-launcher'
-    ]
+    ],
 
     // list of files / patterns to load in the browser
     files: [

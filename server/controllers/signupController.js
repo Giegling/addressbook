@@ -30,7 +30,6 @@ module.exports.create = function(req, res) {
 							       	var userEntry = new User.UserModel();
 									userEntry.email = newUser.email;
 									userEntry.password = newUser.password;
-									userEntry.editable = false;
 
 									userEntry.save(function(err) {
 										if (err) {
@@ -58,7 +57,7 @@ module.exports.create = function(req, res) {
 							       	var userEntry = new User.UserModel();
 									userEntry.email = newUser.email;
 									userEntry.password = newUser.password;
-									userEntry.editable = false;
+									userEntry.isLogged = false;
 
 									userEntry.save(function(err) {
 										if (err) {

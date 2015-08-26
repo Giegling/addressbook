@@ -9,7 +9,7 @@ app.config(function ($routeProvider) {
 			templateUrl: "/components/home/home.html"
 		})
 		.when("/profile", {
-			controller: 'ProfileController',
+			controller: '',
 			templateUrl: "/components/profile/profile.html"
 		})
 		.when("/contacts", {

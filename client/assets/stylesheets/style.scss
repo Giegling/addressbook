@@ -1,0 +1,127 @@
+@mixin transition($time) {
+  -webkit-transition: all ($time) ease;
+  -moz-transition: all ($time) ease;
+  -o-transition: all ($time) ease;
+  -ms-transition: all ($time) ease;
+  transition: all ($time) ease;
+}
+
+@mixin transform($size) {
+  -webkit-transform:scale($size);
+  -moz-transform:scale($size);
+  -ms-transform:scale($size);
+  -o-transform:scale($size);
+  transform:scale($size);
+}
+
+@font-face {
+ 	font-family: 'BPGSquare';
+	src: url('../fonts/BPGSquare.eot?#iefix') format('embedded-opentype'),  url('../fonts/BPGSquare.woff') format('woff'), url('../fonts/BPGSquare.ttf')  format('truetype'), url('../fonts/BPGSquare.svg#BPGSquare') format('svg');
+  	font-weight: normal;
+  	font-style: normal;
+}
+
+.navbar-brand {
+	color: #0066FF !important;
+	font-family: "Lobster", cursive;
+	font-size: 24px;
+	font-weight: 400;
+}
+
+body {
+	font-family: "BPGSquare";
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.zoom {
+  @include transition(1s);
+}
+.zoom:hover{
+  @include transform(1.5);
+}
+
+h4 {
+  color: #000; 
+}
+
+h4 span {
+color: #555; margin-left: 22px;
+}
+
+.search-bar {
+position: absolute; top: 1%; right: 120px; width: 20%;
+}
+
+.card {
+  text-align: justify;
+}
+
+.active {
+  display: none;
+}
+
+.hovered {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.hovered:hover {
+  opacity: 0.5;
+}
+
+.profile-image {
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+p {
+  font-weight: bold;
+}
+p span {
+  font-weight: normal;
+}
+
+.change-img {
+  border: 2px dashed #444;
+  height: 320px;
+  width: 100%;
+  line-height: 320px;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.change-img:hover {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 700px) {
+  .change-img {
+    border: 2px dashed #444;
+    height: 320px;
+    width: 100%;
+    line-height: 320px;
+    text-align: center;
+    font-size: 5vw;
+  }
+}

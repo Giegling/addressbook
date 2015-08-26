@@ -22,9 +22,9 @@ module.exports.check = function(req, res) {
 
 		bcrypt.compare(user.password, checkPassword, function(err, resolution) {	
 			if (resolution) {
-				var user = {email: obj.email};
+				var user_id = obj._id;
 
-				return res.send(user);
+				return res.send(user_id);
 			} else {
 				var error = 'password';
 				return res.send(error);

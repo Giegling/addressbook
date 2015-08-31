@@ -3,12 +3,21 @@ angular.module('app').controller 'ContactsController', [
         ($scope, $location, $cookies, ContactsService) ->
 
             isLogged = $cookies.get 'isLogged'
-            if isLogged == undefined
+            if typeof isLogged == 'undefined'
                 $location.path '/'
+
+            $scope.deselect = ->
+                $scope.contactNew = {
+                    name:   '',
+                    email:  '',
+                    number: ''
+                }
+                $scope.newContact = ''
+                $scope.avatar = './img/noimage.png'
                 return
 
             $scope.addContact = (newContact) ->
-                if newContact.name == undefined && newContact.email == undefined && newContact.number == undefined
+                if typeof newContact.name == 'undefined' && typeof newContact.email == 'undefined' && typeof newContact.number == 'undefined'
                     return
                 else
                     contact = {
@@ -37,12 +46,12 @@ angular.module('app').controller 'ContactsController', [
                 contacts = $scope.savedContacts
                 $scope.deselect()
 
-                for i in contacts
+                for i of contacts
                     if contacts[i]._id == contact._id
                         $scope.savedContacts[i].editable = true
                     else if contacts[i].editable
                         $scope.savedContacts[i].editable = false
-                return
+                    return
 
             $scope.editContact = (newname, newemail, newnumber, contact) ->
                 contacts = $scope.savedContacts
@@ -57,10 +66,10 @@ angular.module('app').controller 'ContactsController', [
                     newnumber = contact.number
 
                 if newname == contact.name && newemail == contact.email && newnumber == contact.number
-                    for i in contacts
+                    for i of contacts
                         $scope.savedContacts[i].editable = false
                 else
-                    for i in contacts
+                    for i of contacts
                         if contacts[i]._id == contact._id
                             ContactsService.update {
                                 _id:    contact._id,
@@ -82,17 +91,7 @@ angular.module('app').controller 'ContactsController', [
 
                 $scope.deleteContact = (contact) ->
                     promise = $scope.showContacts()
-                    ContactsService.remove(contact._id).then $scope.showContacts
-                    return
-
-                $scope.deselect = ->
-                    $scope.contactNew = {
-                        name:   '',
-                        email:  '',
-                        number: ''
-                    }
-                    $scope.newContact = ''
-                    $scope.avatar = './img/noimage.png'
+                    ContactsService.remove(contact._id).then $scope.showContacts()
                     return
 
                 $scope.readImage = (element) ->
@@ -113,4 +112,6 @@ angular.module('app').controller 'ContactsController', [
                     return
 
                 return
+
+            return
     ]

@@ -9,5 +9,5 @@ angular.module('app').factory 'SignupService',
         .error (data, status) ->
             deferred.reject data
             return
-        return
+        return deferred.promise
 ]

@@ -8,19 +8,20 @@ app.directive 'modal', ->
         scope.$watch attrs.visible, (value) ->
             if value == true
                 $(element).modal 'show'
+                return
             else
                 $(element).modal 'hide'
-        return
+                return
 
-    $(element).on 'shown.bs.modal', ->
-        scope.$apply ->
-            scope.$parent[attrs.visible] = true
+        $(element).on 'shown.bs.modal', ->
+            scope.$apply ->
+                scope.$parent[attrs.visible] = true
+                return
+            return
+
+        $(element).on 'hidden.bs.modal', ->
+            scope.$apply ->
+                scope.$parent[attrs.visible] = false
+                return
             return
         return
-
-    $(element).on 'hidden.bs.modal', ->
-        scope.$apply ->
-            scope.$parent[attrs.visible] = false
-            return
-        return
-    return

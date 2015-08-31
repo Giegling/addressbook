@@ -45,4 +45,7 @@ Temporary Items
 server/node_modules
 client/node_modules
 client/assets/bower_components
+client/app.js
+client/app/app.js
+client/app/**/*.js
 node_modules

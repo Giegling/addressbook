@@ -3,7 +3,7 @@ var gulp    = require('gulp'),
 
 var compile = function (src, dest) {
     gulp.src(src)
-    .pipe(coffee())
+    .pipe(coffee({bare: true}))
     .pipe(gulp.dest(dest));
 }
 
@@ -17,7 +17,7 @@ gulp.task('compile', function () {
     compile('./client/coffees/controllers/ContactsController.coffee', 'client/app/components/contacts');
     compile('./client/coffees/controllers/SigninController.coffee', 'client/app/components/signin');
     compile('./client/coffees/controllers/SignupController.coffee', 'client/app/components/signup');
-    compile('./client/coffees/controllers/ProfileController.coffee', 'client/app/components/home');
+    compile('./client/coffees/controllers/ProfileController.coffee', 'client/app/components/profile');
 
     // SERVICES
     compile('./client/coffees/services/HomeService.coffee', 'client/app/components/home');

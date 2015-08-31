@@ -1,8 +1,8 @@
 {
-  "name": "addressbook-api",
+  "name": "addressbook-client",
   "version": "1.0.0",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "^1.13.3",

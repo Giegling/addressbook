@@ -1,4 +1,4 @@
-angular.module('app').factory 'SignupService',
+angular.module('app').factory 'HomeService',
 ['$http', '$q', 'appSettings', ($http, $q, appSettings) ->
     logged = false
 

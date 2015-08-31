@@ -23,15 +23,26 @@ npm install
 cd assets
 bower install
 ```
-5.Run MongoDB and then server
+5.Compile CoffeeScript files to JavaScript
+```
+#!bash
+
+cd addressbook
+gulp compile
+```
+6.Run MongoDB and then server
 ```
 #!bash
 
 mongod
-cd ../..
+```
+```
+#!bash
+
+cd addressbook/server
 npm start
 ```
-6.Open second console and run client
+7.Open second console and run client
 ```
 #!bash
 

@@ -1,20 +1,21 @@
 angular.module('app').controller 'SigninController',
-['$scope', '$cookies', 'SigninService', 'HomeService', ($scope, $cookies, SigninService, HomeService) ->
+['$scope', '$cookies', 'SigninService', ($scope, $cookies, SigninService) ->
     $scope.sendUser = (User) ->
         $scope.User = User;
 
-        if User.email == undefined || User.email == ''
+        if typeof User.email == 'undefined' || User.email == ''
             $scope.signinError_1 = true
         else
             $scope.signinError_1 = false
 
-        if User.password == undefined || User.password == ''
+        if typeof User.password == 'undefined' || User.password == ''
             $scope.signinError_2 = true
         else
             $scope.signinError_2 = false
 
-        if User.email != undefined && User.email != '' && User.password != undefined && User.password != ''
-            SigninService.read(User).then (data) ->
+        if typeof User.email != 'undefined' && User.email != '' && typeof User.password != 'undefined' && User.password != ''
+            SigninService.read User
+            .then (data) ->
                 switch data
                     when 'email'
                         $scope.signinError_3 = true

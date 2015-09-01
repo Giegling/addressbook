@@ -4,7 +4,7 @@ var Contact = require('../models/contact.js');
 
 module.exports.create = function(req, res) {
 	var contact = req.body;
-	
+
 	if (contact.name.trim().length == 0 || contact.email.trim().length == 0 || contact.number.trim().length == 0) {
 		return res.sendStatus(400);
 	}
@@ -64,7 +64,7 @@ module.exports.remove = function(req, res) {
 
 		if (contact != null) {
 			contact.remove();
-			
+
 			return res.sendStatus(200);
 		} else {
 			console.log("Contact not found!");

@@ -1,10 +1,10 @@
 "use strict";
 
 var express = require('express');
-var ContactController = require('../controllers/ContactController.js');
-var SignupController = require('../controllers/SignupController.js');
-var SigninController = require('../controllers/SigninController.js');
-var ProfileController = require('../controllers/ProfileController.js');
+var ContactController = require('../controllers/contactController.js');
+var SignupController = require('../controllers/signupController.js');
+var SigninController = require('../controllers/signinController.js');
+var ProfileController = require('../controllers/profileController.js');
 
 var router = express.Router();
 

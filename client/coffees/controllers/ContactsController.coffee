@@ -29,7 +29,8 @@ angular.module('app').controller 'ContactsController', [
                     $scope.contacts = []
 
                     if contact.name.length != 0 && contact.email.length != 0 && contact.length != 0
-                        ContactsService.create(contact).then (data) ->
+                        ContactsService.create contact
+                        .then (data) ->
                             $scope.contacts.push data
                             return
                         .then $scope.showContacts
@@ -37,7 +38,8 @@ angular.module('app').controller 'ContactsController', [
                         return
 
             $scope.showContacts = ->
-                ContactsService.read().then (data) ->
+                ContactsService.read()
+                .then (data) ->
                     $scope.savedContacts = data
                     return
                 return
@@ -51,7 +53,7 @@ angular.module('app').controller 'ContactsController', [
                         $scope.savedContacts[i].editable = true
                     else if contacts[i].editable
                         $scope.savedContacts[i].editable = false
-                    return
+                return
 
             $scope.editContact = (newname, newemail, newnumber, contact) ->
                 contacts = $scope.savedContacts
@@ -88,29 +90,29 @@ angular.module('app').controller 'ContactsController', [
                                 $scope.savedContacts[i].number      = newContact.number
                                 $scope.savedContacts[i].editable    = false;
                                 return
+                return
 
-                $scope.deleteContact = (contact) ->
-                    promise = $scope.showContacts()
-                    ContactsService.remove(contact._id).then $scope.showContacts()
+            $scope.deleteContact = (contact) ->
+                promise = $scope.showContacts()
+                ContactsService.remove(contact._id).then $scope.showContacts()
+                return
+
+            $scope.readImage = (element) ->
+                reader = new FileReader()
+                reader.onload = (e) ->
+                    $scope.avatar = e.target.result
                     return
+                reader.readAsDataURL element.files[0]
+                return
 
-                $scope.readImage = (element) ->
-                    reader = new FileReader()
-                    reader.onload = (e) ->
-                        $scope.avatar = e.target.result
-                        return
-                    reader.readAsDataURL element.files[0]
-                    return
+            $scope.logout = ->
+                $cookies.remove 'isLogged'
+                $cookies.remove 'user_id'
+                return
 
-                $scope.logout = ->
-                    $cookies.remove 'isLogged'
-                    return
-
-                $scope.order = (predicate) ->
-                    $scope.reverse   = ($scope.predicate == predicate)
-                    $scope.predicate = predicate
-                    return
-
+            $scope.order = (predicate) ->
+                $scope.reverse   = ($scope.predicate == predicate)
+                $scope.predicate = predicate
                 return
 
             return

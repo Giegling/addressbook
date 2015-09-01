@@ -47,6 +47,4 @@ angular.module('app').factory 'ContactsService', [
                 return
 
             return deferred.promise
-
-
 ]

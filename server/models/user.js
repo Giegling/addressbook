@@ -8,7 +8,8 @@ var userSchema = new Schema({
 	editable: {type: Boolean, required: true},
 	date:  {type: Date, default: Date.now},
 	nick: {type: String},
-	name: {type: String}
+	name: {type: String},
+	number: {type: Number}
 
 });
 

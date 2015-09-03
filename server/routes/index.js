@@ -22,13 +22,14 @@ module.exports = function (app) {
 	router.post('/api/signin', SigninController.check);
 
 	// CONTACTS ROUTES
-	router.post('/api/contact/create', ContactController.create);
-	router.put('/api/contact/update', ContactController.update);
-	router.delete('/api/contact/remove/:id', ContactController.remove);
-	router.get('/api/contact/read', ContactController.read);
+	router.post('/api/contact/create', 			ContactController.create);
+	router.put('/api/contact/update', 			ContactController.update);
+	router.delete('/api/contact/remove/:id', 	ContactController.remove);
+	router.get('/api/contact/read', 			ContactController.read);
 
 	// PROFILE ROUTES
-	router.get('/api/profile/check', ProfileController.check);
+	router.get('/api/profile/check/:id', 	ProfileController.check);
+	router.put('/api/profile/update/:id', 	ProfileController.update);
 
 	return router;
 };

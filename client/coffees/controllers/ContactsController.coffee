@@ -58,18 +58,18 @@ angular.module('app').controller 'ContactsController', [
             $scope.editContact = (newname, newemail, newnumber, contact) ->
                 contacts = $scope.savedContacts
 
-                if newname == null || newname == '' || newname.trim().length == 0
+                if newname == null || newname == ''
                     newname = contact.name
 
-                if newemail == null || newemail == '' || newemail.trim().length == 0
+                if newemail == null || newemail == ''
                     newemail = contact.email
 
-                if newnumber == null || newnumber == '' || newnumber.trim().length == 0
+                if newnumber == null || newnumber == ''
                     newnumber = contact.number
 
                 if newname == contact.name && newemail == contact.email && newnumber == contact.number
-                    for i of contacts
-                        $scope.savedContacts[i].editable = false
+                    for b of contacts
+                        $scope.savedContacts[b].editable = false
                 else
                     for i of contacts
                         if contacts[i]._id == contact._id
@@ -79,17 +79,15 @@ angular.module('app').controller 'ContactsController', [
                                 email:  newemail.trim(),
                                 number: newnumber.trim()
                             }
-                            .then (data) ->
-                                newContact = {
-                                    name:   newname.trim(),
-                                    email:  newemail.trim(),
-                                    number: newnumber.trim()
-                                }
-                                $scope.savedContacts[i].name        = newContact.name
-                                $scope.savedContacts[i].email       = newContact.email
-                                $scope.savedContacts[i].number      = newContact.number
-                                $scope.savedContacts[i].editable    = false;
-                                return
+                            newContact = {
+                                name:   newname.trim(),
+                                email:  newemail.trim(),
+                                number: newnumber.trim()
+                            }
+                            $scope.savedContacts[i].name        = newContact.name
+                            $scope.savedContacts[i].email       = newContact.email
+                            $scope.savedContacts[i].number      = newContact.number
+                            $scope.savedContacts[i].editable    = false;
                 return
 
             $scope.deleteContact = (contact) ->

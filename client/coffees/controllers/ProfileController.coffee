@@ -1,16 +1,16 @@
 angular.module('app').controller 'ProfileController',
-['$scope', '$cookies', 'ProfileService', ($scope, $cookies, ProfileService) ->
+['$scope', '$location', '$cookies', 'ProfileService', ($scope, $location, $cookies, ProfileService) ->
     isLogged = $cookies.get 'isLogged'
+    user_id = $cookies.get 'user_id'
 
-    if isLogged
+    if !isLogged
         $location.path '/'
 
     $scope.checkUser = ->
-        user_id = $cookies.get 'user_id'
-
         ProfileService.read user_id
         .then (data) ->
             $scope.User = {
+                _id:        user_id,
                 email:      data.email,
                 number:     data.number,
                 editable:   data.editable,
@@ -22,6 +22,29 @@ angular.module('app').controller 'ProfileController',
 
     $scope.showEdit = ->
         $scope.User.editable = true
+        return
+
+    $scope.updateUser = (fullname, username, number) ->
+        updatedUser = {
+            _id:    user_id,
+            name:   fullname,
+            nick:   username,
+            number: number
+        }
+
+        if updatedUser.name == '' || typeof updatedUser.name == 'undefined' || updatedUser.nick == '' || typeof updatedUser.nick == 'undefined' || updatedUser.number == '' || typeof updatedUser.number == 'undefined'
+            $scope.User.editable = false
+        else
+            ProfileService.update updatedUser
+            .then (data) ->
+                $scope.User.editable = false
+                return
+
+        return
+
+    $scope.logout = ->
+        $cookies.remove 'isLogged'
+        $cookies.remove 'user_id'
         return
 
     return

@@ -1,15 +1,15 @@
 angular.module('app').controller('ProfileController', [
-  '$scope', '$cookies', 'ProfileService', function($scope, $cookies, ProfileService) {
-    var isLogged;
+  '$scope', '$location', '$cookies', 'ProfileService', function($scope, $location, $cookies, ProfileService) {
+    var isLogged, user_id;
     isLogged = $cookies.get('isLogged');
-    if (isLogged) {
+    user_id = $cookies.get('user_id');
+    if (!isLogged) {
       $location.path('/');
     }
     $scope.checkUser = function() {
-      var user_id;
-      user_id = $cookies.get('user_id');
       ProfileService.read(user_id).then(function(data) {
         $scope.User = {
+          _id: user_id,
           email: data.email,
           number: data.number,
           editable: data.editable,
@@ -20,6 +20,26 @@ angular.module('app').controller('ProfileController', [
     };
     $scope.showEdit = function() {
       $scope.User.editable = true;
+    };
+    $scope.updateUser = function(fullname, username, number) {
+      var updatedUser;
+      updatedUser = {
+        _id: user_id,
+        name: fullname,
+        nick: username,
+        number: number
+      };
+      if (updatedUser.name === '' || typeof updatedUser.name === 'undefined' || updatedUser.nick === '' || typeof updatedUser.nick === 'undefined' || updatedUser.number === '' || typeof updatedUser.number === 'undefined') {
+        $scope.User.editable = false;
+      } else {
+        ProfileService.update(updatedUser).then(function(data) {
+          $scope.User.editable = false;
+        });
+      }
+    };
+    $scope.logout = function() {
+      $cookies.remove('isLogged');
+      $cookies.remove('user_id');
     };
   }
 ]);

@@ -8,7 +8,7 @@
 					<img src="http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg" class="img-rounded hovered profile-image"><br><br>
 					<p ng-show="User.name" ng-hide="!User.name">Full Name: <span>{{ User.name }}</span></p>
 					<p ng-show="!User.name" ng-hide="User.name">Full Name: <span>Not defined</span></p>
-					<p ng-show="User.nick" ng-hide="!User.nick">Username: <span>{{ user.nick }}</span></p>
+					<p ng-show="User.nick" ng-hide="!User.nick">Username: <span>{{ User.nick }}</span></p>
 					<p ng-show="!User.nick" ng-hide="User.nick">Username: <span>Not defined</span></p>
 					<p>Email: <span>{{ User.email }}</span></p>
 					<p ng-show="User.number" ng-hide="!User.number">Number: <span>{{ User.number }}</span></p>
@@ -18,11 +18,10 @@
 
 				<div ng-show="User.editable" ng-hide="!User.editable">
 					<div class="change-img img-rounded">Change Avatar</div><br>
-					<input type="text" class="form-control" placeholder="Full Name">
-					<input type="text" class="form-control" placeholder="Username">
-					<input type="email" class="form-control" placeholder="Email">
-					<input type="number" class="form-control" placeholder="Number">
-					<button class="btn btn-success full-width card-toggle" ng-click="updateUser()">Update</button>
+					<input type="text" class="form-control" ng-model="fullname" placeholder="Full Name">
+					<input type="text" class="form-control" ng-model="username" placeholder="Username">
+					<input type="number" class="form-control" ng-model="number" placeholder="Number"><br>
+					<button class="btn btn-success full-width card-toggle" ng-click="updateUser(fullname, username, number)">Update</button>
 				</div>
 			</div>
 		</div>

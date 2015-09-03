@@ -6,7 +6,7 @@
         <tr>
           <th>Avatar</th>
           <!-- <th>&nbsp;</th> -->
-          <th><a href="" ng-click="order('name')">Name</a></th>         
+          <th><a href="" ng-click="order('name')">Name</a></th>
           <th><a href="" ng-click="order('email')">E-Mail</a></th>
           <th><a href="" ng-click="order('number')">Number</a></th>
           <th>Actions</th>
@@ -32,7 +32,7 @@
           <td ng-hide="!savedContact.editable" ng-show="savedContact.editable"><input class="form-control" ng-model="contactNew.name" placeholder="{{ savedContact.name }}"></td>
           <td ng-hide="!savedContact.editable" ng-show="savedContact.editable"><input class="form-control" ng-model="contactNew.email" placeholder="{{ savedContact.email }}"></td>
           <td ng-hide="!savedContact.editable" ng-show="savedContact.editable"><input class="form-control" ng-model="contactNew.number" placeholder="{{ savedContact.number }}"></td>
-    
+
           <td ng-hide="!savedContact.editable" ng-show="savedContact.editable"><button class="btn btn-success" ng-click="editContact(contactNew.name, contactNew.email, contactNew.number, savedContact)"><i class="fa fa-check"></i></button>
           <button class="btn btn-danger" ng-click="deleteContact(savedContact)"><i class="fa fa-times"></i></button></td>
 
